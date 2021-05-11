@@ -1,0 +1,54 @@
+module DNSAnswerTemplate
+{
+   
+   import from DNSAnswerMessage {type dnsquery, d1};
+
+   template dnsquery dnsquery_t1:=
+   {
+       transactionid:= hex2int('8C0C'H),
+	   flags:= hex2int('0100'H),
+	   questions:= 1,
+	   answerrrs:= 0,
+ 	   authorityrrs:= 0,
+	   additionalrrs:= 0,
+	   queries:=
+	   {
+	      //name:= char(0,0,0,3) & "www" & char(0,0,0,6) & "google" & char(0,0,0,2) & "co" & char(0,0,0,2) & "in",
+		  type1:= 1,
+		  class:= hex2int('0001'H)
+	   }
+   }
+ 
+
+   template d1 d1_t1:=
+   {
+       transactionid:= 35852,
+	   flags:= 33152,
+	   questions:= 1,
+       answerrrs:= 1,
+ 	   authorityrrs:= 0,
+	   additionalrrs:= 0,
+ 	   queries:= 
+	   {
+	     //name:= char(0,0,0,3) & "www" & char(0,0,0,6) & "google" & char(0,0,0,2) & "co" & char(0,0,0,2) & "in",
+		 type1:= 1,
+		 class:= 1
+	   },
+ 	   answers:=
+	   {
+	     name:= 49164,
+		 type2:= 1,
+		 class:= 1,
+		 timetolive:= 77,
+		 datalength:= 4,
+		 add:=
+		 {
+		    address1:= 142,
+ 		    address2:= 250,
+            address3:= 193,
+		    address1:= 227
+         }
+	   } 
+   }
+
+}

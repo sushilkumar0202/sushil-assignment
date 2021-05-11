@@ -1,0 +1,42 @@
+module DNSAnswerTestCase
+{
+    import from DNSAnswerTesterConfig all;
+    import from DNSAnswerTemplate all;	
+
+	testcase DNSTestcase() runs on DNSComponent
+	{
+	    DNSP.send (dnsquery_t1);
+		setverdict(pass);
+	}
+
+	testcase DNSTestcase2() runs on DNSComponent
+	{
+	    timer DNSResponseTime:= 5.0;
+        DNSP.send (dnsquery_t1);
+		DNSResponseTime.start;
+
+		alt
+		{
+		   []DNSP.receive(d1_t1)
+		   {
+		      DNSResponseTime.stop;
+              setverdict(pass);
+		   }
+		   []DNSP.receive
+		   {
+		      DNSResponseTime.stop;
+              setverdict(fail);
+		   }
+		   []DNSResponseTime.timeout
+		   {
+		      setverdict(fail);
+		   }
+		}
+	}
+
+	control
+	{
+	    execute(DNSTestcase2());
+	}
+
+}

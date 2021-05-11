@@ -1,0 +1,55 @@
+module DNSAnswerMessage
+{
+    type integer int32(0..4294967295);// with {encode "Binary" variant "Rule32"};
+    type integer int16(0..65535);// with {encode "Binary" variant "Rule16"};
+    type integer int8(0..255);// with {encode "Binary" variant "Rule8"};
+
+    type record dnsquery 
+    {
+       int16 transactionid,
+	   int16 flags,
+	   int16 questions,
+	   int16 answerrrs,
+ 	   int16 authorityrrs,
+	   int16 additionalrrs,
+	   record
+	   {
+	      //universal charstring name,
+		  int16 type1,
+		  int16 class
+	   } queries 
+    }
+	
+ 	
+	type record d1
+	{
+	    int16 transactionid,
+		int16 flags,
+		int16 questions,
+        int16 answerrrs,
+ 	    int16 authorityrrs,
+		int16 additionalrrs,
+		record
+		{
+		   //universal charstring name,
+		   int16 type1,
+		   int16 class
+		} queries,
+		record
+		{
+		   int16 name,
+		   int16 type2,
+		   int16 class,
+		   int32 timetolive,
+		   int16 datalength,
+		   record
+		   {
+		      int8 address1,
+ 		      int8 address2,
+		      int8 address3,
+		      int8 address4 
+           } add
+		} answers	
+	}
+
+}

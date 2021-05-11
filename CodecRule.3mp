@@ -2,15 +2,22 @@ module CodecRule
 {
    /*Rule32
    {
-      Length = "32 bit",
-	  ByteOrder = "big endian",
-	  Signed = false
+      length = "32 bit",
+	  byteOrder = "big endian",
+	  signed = false
    }
 
+   Rule16
+   {
+      length = "16 bit",
+	  byteOrder = "big endian",
+	  signed = false
+   }
+   
    Rule8
    {
-      Length = "8 bit",
-	  ByteOrder = "big endian",
-	  Signed = false
+      length = "32 bit",
+	  byteOrder = "big endian",
+	  signed = false
    }*/
 }

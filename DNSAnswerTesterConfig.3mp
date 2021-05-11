@@ -1,0 +1,12 @@
+module DNSAnswerTesterConfig
+{
+   import from DNSAnswerMessage all;
+   
+
+   type port DNSPort message {out dnsquery; in d1;}
+
+   type component DNSComponent {port DNSPort DNSP;}
+
+   
+
+}
