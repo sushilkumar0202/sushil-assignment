@@ -1,0 +1,34 @@
+module DiameterRequestTemplate
+{
+   import from DiameterRequestMessage {type dheader};
+
+   template dheader ts_dheader_t1:=
+   {
+       version:= 1,
+	   messagelength:= 
+	   {
+	      ml1:= 0,
+		  ml2:= 0,
+		  ml3:= 224
+       },
+ 	  rpetrrrr:= 128,
+	  commandcode:=
+	  {
+	      cc1:= 0,
+		  cc2:= 1,
+		  cc3:= 24
+	  },
+	  applicationid:= 0,
+	  hopbyhopidentifier:= 17,
+	  endtoendidentifier:= 1,
+	  avps:=
+	  {
+	      avpcode := 264,
+ 		  vmprrrrr:= 64,
+ 		  avplength1:= 0,
+          avplength2:= 0, 
+		  avplength3:= 64,
+		  vendorid:= omit		  
+	  }
+   }
+}

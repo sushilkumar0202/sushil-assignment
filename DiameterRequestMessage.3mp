@@ -1,0 +1,37 @@
+module DiameterRequestMessage
+{  
+   type integer int8(0..255); //with {encode "Binary" variant "Rule8"}
+   type integer int32(0..4294967295); //with {encode "Binary" variant "Rule32"}
+
+   type record dheader
+   {
+      int8 version,
+	  record
+	  {
+	     int8 ml1,
+		 int8 ml2,
+		 int8 ml3
+	  } messagelength,
+	  int8 rpetrrrr,
+	  record
+	  {
+	     int8 cc1,
+         int8 cc2,
+ 		 int8 cc3 
+	  } commandcode,
+	  int32 applicationid,
+	  int32 hopbyhopidentifier,
+	  int32 endtoendidentifier,
+	  record
+	  {
+	     int32 avpcode,
+		 int8 vmprrrrr,
+		 int8 avplength1,
+		 int8 avplength2,
+		 int8 avplength3,
+		 int32 vendorid optional 
+	  } avps
+
+   }
+
+}

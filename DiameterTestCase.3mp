@@ -1,0 +1,16 @@
+module DiameterTestCase
+{
+    import from PortConfig all;
+    import from DiameterRequestTemplate all;
+
+	testcase diameterrequest() runs on diametercomp
+	{
+	    diap.send(ts_dheader_t1);
+		setverdict(pass);
+	}
+
+	control
+	{
+	    execute(diameterrequest());
+	}
+}

@@ -1,0 +1,9 @@
+module PortConfig
+{   
+   import from DiameterRequestMessage all;   
+
+   type port diameter message{out dheader;}
+
+   type component diametercomp {port diameter diap;}
+
+}
